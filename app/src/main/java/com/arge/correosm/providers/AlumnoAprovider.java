@@ -15,4 +15,8 @@ public class AlumnoAprovider {
     public Task<Void> create(AlumnoA almunoA){
         return mDatabase.child(almunoA.getId()).setValue(almunoA);
     }
+
+    public DatabaseReference getAlumnoA(String idAlumnoA){
+        return mDatabase.child(idAlumnoA);
+    }
 }

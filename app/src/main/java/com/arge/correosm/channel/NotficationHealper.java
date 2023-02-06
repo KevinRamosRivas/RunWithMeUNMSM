@@ -57,7 +57,23 @@ public class NotficationHealper extends ContextWrapper {
                 .setAutoCancel(true)
                 .setSound(soundUri)
                 .setContentIntent(intent)
-                .setSmallIcon(R.drawable.ic_run);
+                .setSmallIcon(R.drawable.ic_run)
+                .setStyle(new Notification.BigTextStyle()
+                        .bigText(body).setBigContentTitle(title));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public Notification.Builder getNotificaionActions(String title, String body, Uri soundUri, Notification.Action acceptAction, Notification.Action cancelAction){
+        return new Notification.Builder(getApplicationContext(),CHANNEL_id)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setAutoCancel(true)
+                .setSound(soundUri)
+                .setSmallIcon(R.drawable.ic_run)
+                .addAction(acceptAction)
+                .addAction(cancelAction)
+                .setStyle(new Notification.BigTextStyle()
+                        .bigText(body).setBigContentTitle(title));
     }
 
     public NotificationCompat.Builder getBotificaionOldAPI(String title, String body, PendingIntent intent, Uri soundUri){
@@ -67,7 +83,20 @@ public class NotficationHealper extends ContextWrapper {
                 .setAutoCancel(true)
                 .setSound(soundUri)
                 .setContentIntent(intent)
-                .setSmallIcon(R.drawable.ic_run);
+                .setSmallIcon(R.drawable.ic_run)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(body).setBigContentTitle(title));
+    }
+
+    public NotificationCompat.Builder getBotificaionOldAPIAction(String title, String body, Uri soundUri, NotificationCompat.Action accetAction, NotificationCompat.Action cancelAction){
+        return new NotificationCompat.Builder(getApplicationContext(),CHANNEL_id)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setAutoCancel(true)
+                .setSound(soundUri)
+                .setSmallIcon(R.drawable.ic_run)
+                .addAction(accetAction)
+                .addAction(cancelAction)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(body).setBigContentTitle(title));
     }
 }
 

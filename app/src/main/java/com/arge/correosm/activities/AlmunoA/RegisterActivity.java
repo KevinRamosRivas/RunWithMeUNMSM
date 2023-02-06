@@ -97,9 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    /*String id = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     AlumnoA alumnoA = new AlumnoA(id,name,email );
-                    create(alumnoA);
+                    create(alumnoA);*/
                 }else{
                     Toast.makeText(RegisterActivity.this,"No se pudo registrar", Toast.LENGTH_SHORT).show();
                 }

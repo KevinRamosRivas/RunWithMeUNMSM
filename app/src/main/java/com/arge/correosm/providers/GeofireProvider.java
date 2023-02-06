@@ -15,8 +15,8 @@ public class GeofireProvider {
     private GeoFire mGeofire;
     private  LatLng latLng;
 
-    public GeofireProvider(){
-        mDataBase = FirebaseDatabase.getInstance().getReference().child("active_alumnoB");
+    public GeofireProvider(String reference){
+        mDataBase = FirebaseDatabase.getInstance().getReference().child(reference);
         mGeofire = new GeoFire(mDataBase);
     }
 
@@ -32,5 +32,13 @@ public class GeofireProvider {
         GeoQuery geoQuery = mGeofire.queryAtLocation(new GeoLocation(latitude, longitude), radius);
         geoQuery.removeAllListeners();
         return geoQuery;
+    }
+
+    public DatabaseReference getAlumnoBLication(String idALumnoB){
+        return mDataBase.child(idALumnoB).child("l");
+    }
+
+    public DatabaseReference isAlumnoBworking(String idAlumnoB){
+        return FirebaseDatabase.getInstance().getReference().child("alumnoB_working").child(idAlumnoB);
     }
 }

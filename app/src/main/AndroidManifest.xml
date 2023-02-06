@@ -13,10 +13,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CorreoSM">
+        <activity
+            android:name=".activities.StartAloneActivity"
+            android:exported="true" />
+        <activity
+            android:name=".perfil_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ActivityReporting"
+            android:exported="false" />
+        <activity
+            android:name=".activity_barra"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Register2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.Login2Activity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.LoginUniqueActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AlmunoA.CalificationAlumnoB_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AlumnoB.CalificationAlumnoA_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AlumnoB.MapAlumnoBBookingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.AlmunoA.MapAlunoABookingActivity"
+            android:exported="true" />
 
-        <service android:name=".services.MyFirebaseMessaginAlumnoA"
+        <receiver
+            android:name=".receivers.AcceptReceiver"
+            android:enabled="true" />
+        <receiver
+            android:name=".receivers.CancelReceiver"
+            android:enabled="true" />
+
+        <service
+            android:name=".services.MyFirebaseMessaginAlumnoA"
             android:exported="false">
-            <intent-filter >
+            <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>

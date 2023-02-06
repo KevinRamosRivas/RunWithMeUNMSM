@@ -12,9 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.arge.correosm.R;
-import com.arge.correosm.activities.AlmunoA.RegisterActivity;
-import com.arge.correosm.activities.AlumnoB.RegisterBActivity;
-import com.arge.correosm.models.AlumnoB;
+import com.arge.correosm.map_alumnoB;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -23,11 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import com.arge.correosm.map_alumnoB;
 import com.arge.correosm.map_alumnoA;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import dmax.dialog.SpotsDialog;
 
@@ -74,11 +68,9 @@ public class LoginActivity extends AppCompatActivity {
     private void login() {
         String email = mTextInputEmail.getText().toString();
         String password = mTextInputPassword.getText().toString();
-        Pattern patron = Pattern.compile("[a-zA-Z0-9_-]+@[a-zA-Z.]+\\.[a-zA-Z]+");
-        Matcher mat = patron.matcher(email);
-        boolean cumplePatron = mat.find();
+
         if(!email.isEmpty() && !password.isEmpty()){
-            if(password.length() >= 5 && cumplePatron){
+            if(password.length() >= 5){
                 mDialog.show();
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -102,17 +94,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
             }else{
-                if (!cumplePatron){
-                    Toast.makeText(LoginActivity.this, "Correo no valido.", Toast.LENGTH_SHORT).show();
-                }
-                else if(password.length() >= 5){
-                    Toast.makeText(LoginActivity.this, "La contraseña debe tener mas de 5 caractener", Toast.LENGTH_SHORT).show();
-                }
-
+                Toast.makeText(LoginActivity.this, "La contraseña debe tener mas de 5 caractener", Toast.LENGTH_SHORT).show();
 
             }
         }else{
-                Toast.makeText(LoginActivity.this, "Complete los campos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Complete los campos", Toast.LENGTH_SHORT).show();
 
         }
     }

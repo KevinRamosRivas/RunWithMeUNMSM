@@ -120,7 +120,7 @@ public class DetailRequesActivity extends AppCompatActivity implements OnMapRead
 
         fab = findViewById(R.id.fab);
 
-        mGeofireProvider = new GeofireProvider();
+        mGeofireProvider = new GeofireProvider("active_alumnoB");
         mAuthProvider = new AuthProvider();
 
         mGoogleApiProvider = new GoogleApiProvider(DetailRequesActivity.this);

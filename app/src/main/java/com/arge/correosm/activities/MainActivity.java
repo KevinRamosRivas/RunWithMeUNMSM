@@ -8,49 +8,43 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.arge.correosm.HomeActivity;
 import com.arge.correosm.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mButtonA;
-    Button mButtonB;
-
     SharedPreferences mPref;
+
+    Button mButtonGoLogin;
+    Button mButtonGoRegister;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPref = getApplicationContext().getSharedPreferences("typeUser", MODE_PRIVATE);
-        SharedPreferences.Editor editor = mPref.edit();
+        mButtonGoLogin = (Button)findViewById(R.id.btnGoToLogin);
+        mButtonGoRegister=(Button)findViewById(R.id.btnGotoRegister);
 
-        mButtonA = (Button)findViewById(R.id.btnAlumnoA);
-        mButtonB = (Button)findViewById(R.id.btnAlumnoB);
-
-        mButtonA.setOnClickListener(new View.OnClickListener(){
+        mButtonGoLogin.setOnClickListener((view -> {goToLogin();}));
+        mButtonGoRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editor.putString("user", "alumnoA");
-                editor.apply();
-                goToSelectAuth();
+                goToRegister();
             }
         });
-
-        mButtonB.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                editor.putString("user", "alumnoB");
-                editor.apply();
-                goToSelectAuth();
-            }
-        });
-
-
     }
 
-    private void goToSelectAuth() {
-        Intent intent = new Intent(MainActivity.this,SelectOptionAuthActivity.class );
+    public void goToLogin() {
+        Intent intent = new Intent(MainActivity.this, Login2Activity.class);
+        startActivity(intent);
+
+        
+    }
+
+    public void goToRegister() {
+        Intent intent = new Intent(MainActivity.this, Register2Activity.class);
         startActivity(intent);
     }
 

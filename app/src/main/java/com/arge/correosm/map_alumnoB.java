@@ -14,40 +14,35 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationRequest;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Looper;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.arge.correosm.activities.AlmunoA.RegisterActivity;
+import com.arge.correosm.activities.SelectOptionAuthActivity;
 import com.arge.correosm.providers.AuthProvider;
 import com.arge.correosm.providers.GeofireProvider;
 import com.arge.correosm.providers.TokenProvider;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -55,7 +50,6 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
-import java.security.PrivilegedAction;
 import java.util.List;
 
 public class map_alumnoB extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -85,14 +79,20 @@ public class map_alumnoB extends AppCompatActivity implements OnMapReadyCallback
 
     private TokenProvider mTokenProvider;
 
+    private ValueEventListener mListener;
+
+    private Button mbtnCreateEvent;
+    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_alumno_b);
 
         fab = findViewById(R.id.fab);
+        mbtnCreateEvent = findViewById(R.id.btnCreateEvent);
 
-        mGeofireProvider = new GeofireProvider();
+        mGeofireProvider = new GeofireProvider("active_alumnoB");
         mAuthProvider = new AuthProvider();
 
         mTokenProvider = new TokenProvider();
@@ -114,6 +114,16 @@ public class map_alumnoB extends AppCompatActivity implements OnMapReadyCallback
             }
         });
 
+        mbtnCreateEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                disconect();
+                Intent intent = new Intent(map_alumnoB.this, map_alumnoA.class);
+                startActivity(intent);
+            }
+        });
+
+
         if (isPermisionGranted) {
             if (isGPSenable()) {
                 mapView.getMapAsync(this);
@@ -122,6 +132,25 @@ public class map_alumnoB extends AppCompatActivity implements OnMapReadyCallback
             }
         }
         generateToken();
+        isAlumnoBworking();
+    }
+
+
+
+    private void  isAlumnoBworking(){
+        mListener = mGeofireProvider.isAlumnoBworking(mAuthProvider.GetID()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    disconect();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private boolean isGPSenable() {
@@ -316,6 +345,9 @@ public class map_alumnoB extends AppCompatActivity implements OnMapReadyCallback
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        if (mListener !=  null){
+            mGeofireProvider.isAlumnoBworking(mAuthProvider.GetID()).removeEventListener(mListener);
+        }
     }
 
    @Override

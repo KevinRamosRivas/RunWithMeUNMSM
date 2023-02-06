@@ -147,7 +147,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_button"
             android:backgroundTint="@color/black"
-            android:text="SOLICITAR MATCH"
+            android:text="TRAZAR RUTA"
             android:textColor="@color/white"/>
 
 
