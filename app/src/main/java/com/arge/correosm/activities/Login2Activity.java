@@ -36,7 +36,7 @@ public class Login2Activity extends AppCompatActivity {
     Button mButtonLogin;
 
     AlertDialog mDialog;
-
+    private SharedPreferences mPref;
 
     FirebaseAuth mAuth;
     DatabaseReference mDatabase;
@@ -49,7 +49,7 @@ public class Login2Activity extends AppCompatActivity {
         mTextInputEmail = findViewById(R.id.textInputEmail);
         mTextInputPassword = findViewById(R.id.textInputPassword);
         mButtonLogin = findViewById(R.id.btnLogin);
-
+        mPref = getSharedPreferences("Preferences", MODE_PRIVATE);
         mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +78,9 @@ public class Login2Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            SharedPreferences.Editor editor = mPref.edit();
+                            editor.putString("mAuth", mAuth.getCurrentUser().getUid());
+                            editor.commit();
                             Toast.makeText(Login2Activity.this, "El login se realizo correctamente", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(Login2Activity.this, HomeActivity.class);

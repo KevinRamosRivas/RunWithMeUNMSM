@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.arge.correosm.HomeActivity;
 import com.arge.correosm.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences mPref;
+    private SharedPreferences mPref;
 
     Button mButtonGoLogin;
     Button mButtonGoRegister;
@@ -21,8 +22,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPref = getSharedPreferences("Preferences", MODE_PRIVATE);
+        if (mPref.getString("mAuth", null) != null) {
+            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
         setContentView(R.layout.activity_main);
-
         mButtonGoLogin = (Button)findViewById(R.id.btnGoToLogin);
         mButtonGoRegister=(Button)findViewById(R.id.btnGotoRegister);
 
