@@ -72,7 +72,6 @@ public class Login2Activity extends AppCompatActivity {
         boolean cumplePatron = mat.find();
 
         if(!email.isEmpty() && !password.isEmpty()){
-            Toast.makeText(Login2Activity.this, "email:"+email+"\npassword:"+password, Toast.LENGTH_SHORT).show();
             if(password.length() >= 5){
                 mDialog.show();
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

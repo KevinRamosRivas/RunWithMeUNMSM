@@ -175,8 +175,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mExtraOriginLat = getIntent().getDoubleExtra("origin_lat", 0);
         mExtraOriginLng = getIntent().getDoubleExtra("origin_lng", 0);
+        Log.d("latandlogOrigin", mExtraOriginLat + " " + mExtraOriginLng);
         mExtraDestinantionLat = getIntent().getDoubleExtra("destination_lat", 0);
         mExtraDestinantionLng = getIntent().getDoubleExtra("destination_lng", 0);
+        Log.d("latandlogDestin", mExtraDestinantionLat + " " + mExtraDestinantionLng);
 
         mOriginLatLng = new LatLng(mExtraOriginLat, mExtraOriginLng);
         mDestinatioLatLong = new LatLng(mExtraDestinantionLat, mExtraDestinantionLng);
@@ -194,7 +196,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (isGPSenable()) {
                 mapView.getMapAsync(this);
                 mapView.onCreate(savedInstanceState);
-
             }
         }
 
@@ -331,10 +332,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 + "destination=" + mDestinatioLatLong.latitude+ "," +mDestinatioLatLong.longitude+ "&"
                 //  + "departure_time" + (new Date().getTime()) + (60*60*1000)+  "&"
                 //  + "traffic_model=best_guess&"
-                + "key=AIzaSyA5s1KOmTEPdWPZJ1A97-22KgdL68yM-BQ";
+                + "key=AIzaSyAAP7QO_xxYiyCZkydzYOdt9cPdG5cRw5s";
         String url = baseUrl+query;
 
-        System.out.println("url MapsAc: " + url);
+        Log.d("url MapsActivity", url);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -387,7 +388,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     mTextViewStartAddreess.setText(start_address);
                     mTextViewendAddress.setText(end_address);
 
-                    Log.i("distance",""+distance);
+                    Log.d("distance",""+distance);
+                    Log.d("duration",""+duration);
 
                     /*JSONArray legs = jso.getJSONArray("legs");
                     JSONObject leg = legs.getJSONObject(0);

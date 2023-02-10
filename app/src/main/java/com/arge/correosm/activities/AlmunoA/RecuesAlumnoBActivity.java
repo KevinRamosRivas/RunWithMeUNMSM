@@ -179,7 +179,7 @@ public class RecuesAlumnoBActivity extends AppCompatActivity {
                 + "destination=" + mAlumnoBFoundLatLng.latitude+ "," +mAlumnoBFoundLatLng.longitude+ "&"
                 //  + "departure_time" + (new Date().getTime()) + (60*60*1000)+  "&"
                 //  + "traffic_model=best_guess&"
-                + "key=AIzaSyA5s1KOmTEPdWPZJ1A97-22KgdL68yM-BQ";
+                + "key=AIzaSyAAP7QO_xxYiyCZkydzYOdt9cPdG5cRw5s";
         String url = baseUrl+query;
 
         System.out.println("url MapsAc rec: " + url);

@@ -341,7 +341,7 @@ public class DetailRequesActivity extends AppCompatActivity implements OnMapRead
                     + "destination=" + destinationLatLng.latitude+ "," +destinationLatLng.longitude+ "&"
                     //  + "departure_time" + (new Date().getTime()) + (60*60*1000)+  "&"
                     //  + "traffic_model=best_guess&"
-                    + "key=AIzaSyA5s1KOmTEPdWPZJ1A97-22KgdL68yM-BQ";
+                    + "key=AIzaSyAAP7QO_xxYiyCZkydzYOdt9cPdG5cRw5s";
 
              System.out.println("url WS " + url);
 

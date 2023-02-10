@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.arge.correosm.HomeActivity;
 import com.arge.correosm.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     public void goToLogin() {
         Intent intent = new Intent(MainActivity.this, Login2Activity.class);
         startActivity(intent);
-
         
     }
 
