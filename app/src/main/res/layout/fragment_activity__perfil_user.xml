@@ -17,16 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="44dp"
-            android:layout_height="38dp"
-            android:layout_gravity="end"
-            android:background="#fff"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_exit" />
-
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="107dp"
@@ -36,6 +26,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:srcCompat="@drawable/user" />
+
+        <ImageButton
+            android:id="@+id/btnCloseSession"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:background="#fff"
+            app:srcCompat="@drawable/ic_exit"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <LinearLayout
             android:id="@+id/linearLayout0"
@@ -61,7 +60,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/nameUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -80,7 +79,6 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="64dp"
                 tools:layout_editor_absoluteY="289dp">
-                //**** facultad
 
                 <TextView
                     android:id="@+id/textView3"
@@ -102,7 +100,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                //****Codigo
 
                 <TextView
                     android:id="@+id/textView5"
@@ -116,7 +113,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/codeTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
@@ -124,7 +121,6 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                //****Peso
 
                 <TextView
                     android:id="@+id/textView7"
@@ -146,7 +142,6 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                //****Distrito
 
                 <TextView
                     android:id="@+id/textView9"
@@ -160,7 +155,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/districtTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
@@ -168,7 +163,6 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                //**** Fecha de Nacimiento
 
                 <TextView
                     android:id="@+id/textView11"
@@ -196,4 +190,5 @@
 
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

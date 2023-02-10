@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -81,6 +82,7 @@ public class Login2Activity extends AppCompatActivity {
                             SharedPreferences.Editor editor = mPref.edit();
                             editor.putString("mAuth", mAuth.getCurrentUser().getUid());
                             editor.commit();
+                            Log.d("mAuth", mPref.getString("mAuth", ""));
                             Toast.makeText(Login2Activity.this, "El login se realizo correctamente", Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(Login2Activity.this, HomeActivity.class);
