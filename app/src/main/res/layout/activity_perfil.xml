@@ -19,10 +19,9 @@
 
         <ImageButton
             android:id="@+id/btnCloseSession"
-            android:layout_width="44dp"
-            android:layout_height="38dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="end"
-            android:background="#fff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_exit" />
@@ -35,7 +34,7 @@
             android:layout_marginBottom="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:srcCompat="@drawable/student_icon" />
+            tools:srcCompat="@drawable/man_running" />
 
         <LinearLayout
             android:id="@+id/linearLayout0"
@@ -84,9 +83,6 @@
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="64dp"
                 tools:layout_editor_absoluteY="289dp">
-                //**** facultad
-
-                //****Codigo
 
                 <TextView
                     android:id="@+id/textView5"
@@ -110,9 +106,6 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                //****Peso
-
-                //****Distrito
 
                 <TextView
                     android:id="@+id/textView9"
@@ -136,7 +129,6 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                //**** Fecha de Nacimiento
 
             </LinearLayout>
         </LinearLayout>

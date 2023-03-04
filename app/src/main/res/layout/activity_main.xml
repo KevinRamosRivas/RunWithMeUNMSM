@@ -57,8 +57,9 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_button"
-                android:backgroundTint="@color/white"
-                android:text="REGISTRATE" />
+                android:backgroundTint="@color/black"
+                android:text="REGISTRATE"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/btnGoToLogin"

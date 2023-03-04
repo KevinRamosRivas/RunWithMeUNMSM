@@ -18,7 +18,7 @@
             android:layout_width="306dp"
             android:layout_height="250dp"
             android:layout_gravity="center"
-            android:src="@drawable/fondologin"
+            android:src="@drawable/logo_general"
 
             tools:ignore="MissingConstraints" />
     </LinearLayout>
@@ -51,7 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="Email address@unmsm.edu.pe"
+                    android:hint="Email: alumno@unmsm.edu.pe"
                     android:inputType="textEmailAddress"
                     android:paddingVertical="10dp">
 
@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@null"
-                    android:hint="Password"
+                    android:hint="Contraseña"
                     android:inputType="textPassword"
                     android:paddingVertical="10dp">
 
