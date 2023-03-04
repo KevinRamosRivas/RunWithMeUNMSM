@@ -115,4 +115,6 @@ public class AlumnoABooking {
     public void setDestinationLng(double destinationLng) {
         this.destinationLng = destinationLng;
     }
+
+
 }

@@ -113,6 +113,22 @@ public class RecuesAlumnoBActivity extends AppCompatActivity {
 
         mGeoFireProvider = new GeofireProvider("active_alumnoB");
         getClosesAlumnosB();
+        mButtonCancelRequest.setOnClickListener(view -> {
+            cancelBooking();
+        });
+    }
+
+    private void cancelBooking() {
+        //borrar de la base de datos
+        mAlumnoABookingProvider.getAlumnoABooking(mAuthProvider.GetID()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(RecuesAlumnoBActivity.this, "La solicitud se cancelo correctamente", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RecuesAlumnoBActivity.this, map_alumnoA.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void getClosesAlumnosB(){

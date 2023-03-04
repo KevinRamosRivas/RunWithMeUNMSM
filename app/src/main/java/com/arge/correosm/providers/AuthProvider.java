@@ -24,4 +24,5 @@ public class AuthProvider {
     public String GetID(){
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
+
 }

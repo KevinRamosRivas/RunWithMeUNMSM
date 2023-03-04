@@ -131,9 +131,6 @@ public class map_alumnoB extends AppCompatActivity implements OnMapReadyCallback
 
             }
         }
-        else {
-            checkMyPermission();
-        }
         generateToken();
         isAlumnoBworking();
     }
